@@ -19,6 +19,9 @@
       "id": "systemd-unit-file",
       "aliases": ["systemd unit file", "systemd-unit-file"],
       "extensions": [
+        ".link",
+        ".netdev",
+        ".network",
         ".service",
         ".socket",
         ".device",
