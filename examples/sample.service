@@ -4,7 +4,7 @@
 UnknownOption1 = hoge # 日本語
 UnknownOption2=hoge # no space before and after '='
 WrappedLine = foo bar \
-  aaa bbb ccc # not supported
+  aaa bbb ccc # wrapped line
 X-prefixed-options1 = 
 
 [Unit]

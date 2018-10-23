@@ -117,7 +117,7 @@
     "unknown-options": {
       "patterns": [{
         "name": "keyword.other",
-        "match": "^[^=]+"
+        "match": "^[^= ]+"
       }]
     },
     "on-failure-job-modes": {
