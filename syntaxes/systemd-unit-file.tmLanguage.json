@@ -14,6 +14,7 @@
     { "include": "#swap-section-known-options" },
     { "include": "#path-section-known-options" },
     { "include": "#timer-section-known-options" },
+    { "include": "#execution-environment-known-options"},
     { "include": "#options-prefixed-with-x" },
     { "include": "#unknown-options" },
     { "include": "#on-failure-job-modes" },
@@ -106,6 +107,12 @@
       "patterns": [{
         "name": "entity.name.tag",
         "match": "\\b(OnActiveSec|OnBootSec|OnStartupSec|OnUnitActiveSec|OnUnitInactiveSec|OnCalendar|AccuracySec|RandomizedDelaySec|Unit|Persistent|WakeSystem)\\b"
+      }]
+    },
+    "execution-environment-known-options": {
+      "patterns": [{
+        "name": "entity.name.tag",
+        "match": "\\b(WorkingDirectory|RootDirectory|RootImage|MountAPIVFS|BindPaths|BindReadOnlyPaths|User|Group|DynamicUser|SupplementaryGroups|PAMName|CapabilityBoundingSet|AmbientCapabilities|NoNewPrivileges|SecureBits|SELinuxContext|AppArmorProfile|SmackProcessLabel|LimitCPU|LimitFSIZE|LimitDATA|LimitSTACK|LimitCORE|LimitRSS|LimitNOFILE|LimitAS|LimitNPROC|LimitMEMLOCK|LimitLOCKS|LimitSIGPENDING|LimitMSGQUEUE|LimitNICE|LimitRTPRIO|LimitRTTIME|UMask|KeyringMode|OOMScoreAdjust|TimerSlackNSec|Personality|IgnoreSIGPIPE|Nice|CPUSchedulingPolicy|CPUSchedulingPriority|CPUSchedulingResetOnFork|CPUAffinity|IOSchedulingClass|IOSchedulingPriority|ProtectSystem|ProtectHome|RuntimeDirectory|StateDirectory|CacheDirectory|LogsDirectory|ConfigurationDirectory|RuntimeDirectoryMode|StateDirectoryMode|CacheDirectoryMode|LogsDirectoryMode|ConfigurationDirectoryMode|RuntimeDrectoryPreserve|ReadWritePaths|ReadOnlyPaths|InaccessiblePaths|PrivateTmp|PrivateDevices|PrivateNetwork|PrivateUsers|ProtectKernelTunables|ProtectKernelModules|ProtectControlGroups|RestrictAddressFamilies|RestrictNamespaces|LockPersonality|MemoryDenyWriteExecute|RestrictRealtime|RemoveIPC|MountFlags|SystemCallFilter|SystemCallErrorNumber|SystemCallArchitectures|Environment|EnvironmentFile|PassEnvironment|UnsetEnvironment|StandardInput|StandardOutput|StandardError|StandardInputText|StandardInputData|LogLevelMax|LogExtraFields|SyslogIdentifier|SyslogFacility|SyslogLevel|SyslogPrefix|TTYPath|TTYReset|TTYHangup|TTYVTDisallocate|UtmpIdentifier|UtmpMode|)\\b"
       }]
     },
     "options-prefixed-with-x": {

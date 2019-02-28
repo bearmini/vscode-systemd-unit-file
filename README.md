@@ -2,6 +2,9 @@
 
 VS Code extension for colorizing systemd unit files.
 
+### 1.0.3
+
+Support systemd.exec(5) - Execution environment configuration
 
 ### 1.0.2
 
