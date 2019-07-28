@@ -70,19 +70,19 @@
     "service-section-known-options": {
       "patterns": [{
         "name": "entity.name.tag",
-        "match": "\\b(Type|RemainAfterExit|GuessMainPID|PIDFile|BusName|BusPolicy|ExecStartPre|ExecStartPost|ExecStart|ExecReload|ExecStopPost|ExecStop|RestartSec|TimeoutStartSec|TimeoutStopSec|TimeoutSec|WatchdogSec|Restart|SuccessExitStatus|RestartPreventExitStatus|RestartForceExitStatus|PermissionsStartOnly|RootDirectoryStartOnly|NonBlocking|NotifyAccess|Sockets|StartLimitInterval|StartLimitBurst|StartLimitAction|FailureAction|RebootArgument|FileDescriptorStoreMax)\\b"
+        "match": "\\b(Type|RemainAfterExit|GuessMainPID|PIDFile|BusName|BusPolicy|ExecStartPre|ExecStartPost|ExecStart|ExecReload|ExecStopPost|ExecStop|RestartSec|TimeoutStartSec|TimeoutStopSec|TimeoutSec|WatchdogSec|Restart|SuccessExitStatus|RestartPreventExitStatus|RestartForceExitStatus|PermissionsStartOnly|RootDirectoryStartOnly|NonBlocking|NotifyAccess|Sockets|StartLimitInterval|StartLimitBurst|StartLimitAction|FailureAction|RebootArgument|FileDescriptorStoreMax|KillMode|KillSignal|SendSIGHUP|SendSIGKILL|FinalKillSignal|WatchdogSignal)\\b"
       }]
     },
     "socket-section-known-options": {
       "patterns": [{
         "name": "entity.name.tag",
-        "match": "\\b(ListenStream|ListenDatagram|ListenSequentialPacket|ListenFIFO|ListenSpecial|ListenNetlink|ListenMessageQueue|BindIPv6Only|Backlog|BindToDevice|SocketUser|SocketGroup|SocketMode|DirectoryMode|Accept|MaxConnections|KeepAliveTimeSec|KeepAliveIntervalSec|KeepAliveProbes|KeepAlive|NoDelay|Priority|DeferAcceptSec|ReceiveBuffer|SendBuffer|IPTOS|IPTTL|Mark|ReusePort|SmackLabelIPIn|SmackLabelIPOut|SmackLabel|SELinuxContextFromNet|PipeSize|MessageQueueMaxMessages|MessageQueueMessageSize|FreeBind|Transparent|Broadcast|PassCredentials|PassSecurity|TCPCongestion|ExecStartPre|ExecStartPost|ExecStopPre|ExecStopPost|TimeoutSec|Service|RemoveOnStop|Symlinks)\\b"
+        "match": "\\b(ListenStream|ListenDatagram|ListenSequentialPacket|ListenFIFO|ListenSpecial|ListenNetlink|ListenMessageQueue|BindIPv6Only|Backlog|BindToDevice|SocketUser|SocketGroup|SocketMode|DirectoryMode|Accept|MaxConnections|KeepAliveTimeSec|KeepAliveIntervalSec|KeepAliveProbes|KeepAlive|NoDelay|Priority|DeferAcceptSec|ReceiveBuffer|SendBuffer|IPTOS|IPTTL|Mark|ReusePort|SmackLabelIPIn|SmackLabelIPOut|SmackLabel|SELinuxContextFromNet|PipeSize|MessageQueueMaxMessages|MessageQueueMessageSize|FreeBind|Transparent|Broadcast|PassCredentials|PassSecurity|TCPCongestion|ExecStartPre|ExecStartPost|ExecStopPre|ExecStopPost|TimeoutSec|Service|RemoveOnStop|Symlinks|KillMode|KillSignal|SendSIGHUP|SendSIGKILL|FinalKillSignal|WatchdogSignal)\\b"
       }]
     },
     "mount-section-known-options": {
       "patterns": [{
         "name": "entity.name.tag",
-        "match": "\\b(What|Where|Type|Options|SloppyOptions|DirectoryMode|TimeoutSec)\\b"
+        "match": "\\b(What|Where|Type|Options|SloppyOptions|DirectoryMode|TimeoutSec|KillMode|KillSignal|SendSIGHUP|SendSIGKILL|FinalKillSignal|WatchdogSignal)\\b"
       }]
     },
     "automount-section-known-options": {
@@ -94,7 +94,7 @@
     "swap-section-known-options": {
       "patterns": [{
         "name": "entity.name.tag",
-        "match": "\\b(What|Priority|Options|TimeoutSec)\\b"
+        "match": "\\b(What|Priority|Options|TimeoutSec|KillMode|KillSignal|SendSIGHUP|SendSIGKILL|FinalKillSignal|WatchdogSignal)\\b"
       }]
     },
     "path-section-known-options": {
