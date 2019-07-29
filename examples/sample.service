@@ -75,6 +75,12 @@ AssertDirectoryNotEmpty =
 AssertFileNotEmpty =
 AssertFileIsExecutable =
 SourcePath =
+KillMode=
+KillSignal=
+SendSIGHUP=
+SendSIGKILL=
+FinalKillSignal=
+WatchdogSignal=
 
 [Install]
 Alias =
@@ -115,6 +121,12 @@ StartLimitAction = none reboot-force reboot-immediate reboot poweroff-force powe
 FailureAction =
 RebootArgument =
 FileDescriptorStoreMax =
+KillMode=
+KillSignal=
+SendSIGHUP=
+SendSIGKILL=
+FinalKillSignal=
+WatchdogSignal=
 
 [Socket]
 ListenStream =
@@ -167,6 +179,12 @@ TimeoutSec =
 Service =
 RemoveOnStop =
 Symlinks =
+KillMode=
+KillSignal=
+SendSIGHUP=
+SendSIGKILL=
+FinalKillSignal=
+WatchdogSignal=
 
 [Mount]
 What =
@@ -176,6 +194,12 @@ Options =
 SloppyOptions =
 DirectoryMode =
 TimeoutSec =
+KillMode=
+KillSignal=
+SendSIGHUP=
+SendSIGKILL=
+FinalKillSignal=
+WatchdogSignal=
 
 [Automount]
 Where =
@@ -187,6 +211,12 @@ What =
 Priority =
 Options =
 TimeoutSec =
+KillMode=
+KillSignal=
+SendSIGHUP=
+SendSIGKILL=
+FinalKillSignal=
+WatchdogSignal=
 
 [Path]
 PathExists =
