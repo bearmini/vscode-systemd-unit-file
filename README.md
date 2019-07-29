@@ -2,6 +2,10 @@
 
 VS Code extension for colorizing systemd unit files.
 
+### 1.0.4
+
+Support systemd.kill configuration for services, sockets, mount points, swap devices and scopes
+
 ### 1.0.3
 
 Support systemd.exec(5) - Execution environment configuration
