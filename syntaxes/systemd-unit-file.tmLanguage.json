@@ -70,7 +70,7 @@
     "service-section-known-options": {
       "patterns": [{
         "name": "entity.name.tag",
-        "match": "\\b(Type|RemainAfterExit|GuessMainPID|PIDFile|BusName|BusPolicy|ExecStartPre|ExecStartPost|ExecStart|ExecReload|ExecStopPost|ExecStop|RestartSec|TimeoutStartSec|TimeoutStopSec|TimeoutSec|WatchdogSec|Restart|SuccessExitStatus|RestartPreventExitStatus|RestartForceExitStatus|PermissionsStartOnly|RootDirectoryStartOnly|NonBlocking|NotifyAccess|Sockets|StartLimitInterval|StartLimitBurst|StartLimitAction|FailureAction|RebootArgument|FileDescriptorStoreMax|KillMode|KillSignal|SendSIGHUP|SendSIGKILL|FinalKillSignal|WatchdogSignal)\\b"
+        "match": "\\b(Type|RemainAfterExit|GuessMainPID|PIDFile|BusName|BusPolicy|ExecStartPre|ExecStartPost|ExecStart|ExecReload|ExecStopPost|ExecStop|RestartSec|TimeoutStartSec|TimeoutStopSec|TimeoutSec|WatchdogSec|Restart|SuccessExitStatus|RestartPreventExitStatus|RestartForceExitStatus|PermissionsStartOnly|RootDirectoryStartOnly|NonBlocking|NotifyAccess|Sockets|StartLimitInterval|StartLimitBurst|StartLimitAction|FailureAction|RebootArgument|FileDescriptorStoreMax|KillMode|KillSignal|SendSIGHUP|SendSIGKILL|FinalKillSignal|WatchdogSignal|ReadWriteDirectories|CPUWeight|CPUQuota|IOWeight|MemorySwapMax)\\b"
       }]
     },
     "socket-section-known-options": {
