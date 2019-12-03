@@ -4,6 +4,10 @@ VS Code extension for colorizing systemd unit files.
 
 ## Version history
 
+### 1.0.6
+
+- Update systemd.unit(5) options
+
 ### 1.0.5
 
 - Add systemd.exec(5) options
