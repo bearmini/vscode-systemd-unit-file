@@ -5,7 +5,7 @@
   },
   "displayName": "systemd-unit-file",
   "description": "Language support for systemd unit files",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "publisher": "coolbear",
   "engines": {
     "vscode": "^1.20.0"

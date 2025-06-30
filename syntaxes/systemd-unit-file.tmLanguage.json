@@ -2,9 +2,6 @@
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "systemd unit file",
   "patterns": [
-    { "include": "#single-line-comments" },
-    { "include": "#known-sections" },
-    { "include": "#unknown-sections" },
     { "include": "#unit-section-known-options" },
     { "include": "#install-section-known-options" },
     { "include": "#service-section-known-options" },
@@ -15,8 +12,10 @@
     { "include": "#path-section-known-options" },
     { "include": "#timer-section-known-options" },
     { "include": "#execution-environment-known-options"},
+    { "include": "#resource-control-known-options" },
+    { "include": "#kill-known-options" },
+    { "include": "#scope-known-options" },
     { "include": "#options-prefixed-with-x" },
-    { "include": "#unknown-options" },
     { "include": "#on-failure-job-modes" },
     { "include": "#condition-architectures" },
     { "include": "#condition-virtualizations" },
@@ -31,7 +30,11 @@
     { "include": "#specifiers" },
     { "include": "#booleans" },
     { "include": "#numbers" },
-    { "include": "#suffixed-with-a-time-unit" }
+    { "include": "#suffixed-with-a-time-unit" },
+    { "include": "#single-line-comments" },
+    { "include": "#known-sections" },
+    { "include": "#unknown-sections" },
+    { "include": "#unknown-options" }
   ],
   "repository": {
     "single-line-comments": {
@@ -58,66 +61,79 @@
     "unit-section-known-options": {
       "patterns": [{
         "name": "entity.name.tag",
-        "match": "\\b(Description|Documentation|Requires|RequiresOverridable|Requisite|RequisiteOverridable|Wants|BindsTo|PartOf|Conflicts|Before|After|OnFailure|PropagatesReloadTo|ReloadPropagatedFrom|JoinsNamespaceOf|RequiresMountsFor|OnFailureJobMode|IgnoreOnIsolate|IgnoreOnSnapshot|StopWhenUnneeded|RefuseManualStart|RefuseManualStop|AllowIsolate|DefaultDependencies|JobTimeoutSec|JobTimeoutAction|JobTimeoutRebootArgument|ConditionArchitecture|ConditionVirtualization|ConditionHost|ConditionKernelCommandLine|ConditionSecurity|ConditionCapability|ConditionACPower|ConditionNeedsUpdate|ConditionFirstBoot|ConditionPathExistsGlob|ConditionPathExists|ConditionPathIsDirectory|ConditionPathIsSymbolicLink|ConditionPathIsMountPoint|ConditionPathIsReadWrite|ConditionDirectoryNotEmpty|ConditionFileNotEmpty|ConditionFileIsExecutable|AssertArchitecture|AssertVirtualization|AssertHost|AssertKernelCommandLine|AssertSecurity|AssertCapability|AssertACPower|AssertNeedsUpdate|AssertFirstBoot|AssertPathExistsGlob|AssertPathExists|AssertPathIsDirectory|AssertPathIsSymbolicLink|AssertPathIsMountPoint|AssertPathIsReadWrite|AssertDirectoryNotEmpty|AssertFileNotEmpty|AssertFileIsExecutable|SourcePath)\\b"
+        "_source": "https://www.freedesktop.org/software/systemd/man/latest/systemd.unit.html",
+        "match": "\\b(Description|Documentation|Wants|Requires|Requisite|BindsTo|PartOf|Upholds|Conflicts|Before|After|OnFailure|OnSuccess|PropagatesReloadTo|ReloadPropagatedFrom|PropagatesStopTo|StopPropagatedFrom|JoinsNamespaceOf|RequiresMountsFor|WantsMountsFor|OnSuccessJobMode|OnFailureJobMode|IgnoreOnIsolate|StopWhenUnneeded|RefuseManualStart|RefuseManualStop|AllowIsolate|DefaultDependencies|SurviveFinalKillSignal|CollectMode|FailureAction|SuccessAction|FailureActionExitStatus|SuccessActionExitStatus|JobTimeoutSec|JobRunningTimeoutSec|JobTimeoutAction|JobTimeoutRebootArgument|StartLimitIntervalSec|StartLimitBurst|StartLimitAction|RebootArgument|SourcePath)\\b"
       },{
         "name": "entity.name.tag",
-        "_source": "https://www.freedesktop.org/software/systemd/man/systemd.unit.html",
-        "match": "\\b(Description|Documentation|Wants|Requires|Requisite|BindsTo|PartOf|Conflicts|Before|After|OnFailure|PropagatesReloadTo|ReloadPropagatedFrom|JoinsNamespaceOf|RequiresMountsFor|OnFailureJobMode|IgnoreOnIsolate|StopWhenUnneeded|RefuseManualStart|RefuseManualStop|AllowIsolate|DefaultDependencies|CollectMode|FailureAction|SuccessAction|FailureActionExitStatus|SuccessActionExitStatus|JobTimeoutSec|JobRunningTimeoutSec|JobTimeoutAction|JobTimeoutRebootArgument|StartLimitIntervalSec|StartLimitBurst|StartLimitAction|RebootArgument|SourcePath|ConditionArchitecture|ConditionVirtualization|ConditionHost|ConditionKernelCommandLine|ConditionKernelVersion|ConditionSecurity|ConditionCapability|ConditionACPower|ConditionNeedsUpdate|ConditionFirstBoot|ConditionPathExists|ConditionPathExistsGlob|ConditionPathIsDirectory|ConditionPathIsSymbolicLink|ConditionPathIsMountPoint|ConditionPathIsReadWrite|ConditionDirectoryNotEmpty|ConditionFileNotEmpty|ConditionFileIsExecutable|ConditionUser|ConditionGroup|ConditionControlGroupController|ConditionMemory|ConditionCPUs|AssertArchitecture|AssertVirtualization|AssertHost|AssertKernelCommandLine|AssertKernelVersion|AssertSecurity|AssertCapability|AssertACPower|AssertNeedsUpdate|AssertFirstBoot|AssertPathExists|AssertPathExistsGlob|AssertPathIsDirectory|AssertPathIsSymbolicLink|AssertPathIsMountPoint|AssertPathIsReadWrite|AssertDirectoryNotEmpty|AssertFileNotEmpty|AssertFileIsExecutable|AssertUser|AssertGroup|AssertControlGroupController)\\b"
+        "_source": "[Unit] section Conditions and Asserts: https://www.freedesktop.org/software/systemd/man/latest/systemd.unit.html#Conditions%20and%20Asserts",
+        "match": "\\b(ConditionArchitecture|ConditionFirmware|ConditionVirtualization|ConditionHost|ConditionKernelCommandLine|ConditionKernelVersion|ConditionCredential|ConditionEnvironment|ConditionSecurity|ConditionCapability|ConditionACPower|ConditionNeedsUpdate|ConditionFirstBoot|ConditionPathExists|ConditionPathExistsGlob|ConditionPathIsDirectory|ConditionPathIsSymbolicLink|ConditionPathIsMountPoint|ConditionPathIsReadWrite|ConditionPathIsEncrypted|ConditionDirectoryNotEmpty|ConditionFileNotEmpty|ConditionFileIsExecutable|ConditionUser|ConditionGroup|ConditionControlGroupController|ConditionMemory|ConditionCPUs|ConditionCPUFeature|ConditionOSRelease|ConditionMemoryPressure|ConditionCPUPressure|ConditionIOPressure|AssertArchitecture|AssertVirtualization|AssertHost|AssertKernelCommandLine|AssertKernelVersion|AssertCredential|AssertEnvironment|AssertSecurity|AssertCapability|AssertACPower|AssertNeedsUpdate|AssertFirstBoot|AssertPathExists|AssertPathExistsGlob|AssertPathIsDirectory|AssertPathIsSymbolicLink|AssertPathIsMountPoint|AssertPathIsReadWrite|AssertPathIsEncrypted|AssertDirectoryNotEmpty|AssertFileNotEmpty|AssertFileIsExecutable|AssertUser|AssertGroup|AssertControlGroupController|AssertMemory|AssertCPUs|AssertCPUFeature|AssertOSRelease|AssertMemoryPressure|AssertCPUPressure|AssertIOPressure)\\b"
+      },{
+        "name": "entity.name.tag",
+        "_source": "unknown",
+        "match": "\\b(RequiresOverridable|RequisiteOverridable|IgnoreOnSnapshot)\\b"
       }]
     },
     "install-section-known-options": {
       "patterns": [{
         "name": "entity.name.tag",
-        "match": "\\b(Alias|WantedBy|RequiredBy|Also|DefaultInstance)\\b"
+        "_source": "[Install] Section Options: https://www.freedesktop.org/software/systemd/man/latest/systemd.unit.html#%5BInstall%5D%20Section%20Options",
+        "match": "\\b(Alias|WantedBy|RequiredBy|UpheldBy|Also|DefaultInstance)\\b"
       }]
     },
     "service-section-known-options": {
       "patterns": [{
         "name": "entity.name.tag",
-        "match": "\\b(Type|RemainAfterExit|GuessMainPID|PIDFile|BusName|BusPolicy|ExecStartPre|ExecStartPost|ExecStart|ExecReload|ExecStopPost|ExecStop|RestartSec|TimeoutStartSec|TimeoutStopSec|TimeoutSec|WatchdogSec|Restart|SuccessExitStatus|RestartPreventExitStatus|RestartForceExitStatus|PermissionsStartOnly|RootDirectoryStartOnly|NonBlocking|NotifyAccess|Sockets|StartLimitInterval|StartLimitBurst|StartLimitAction|FailureAction|RebootArgument|FileDescriptorStoreMax|KillMode|KillSignal|SendSIGHUP|SendSIGKILL|FinalKillSignal|WatchdogSignal)\\b"
+        "_source": "https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html",
+        "match": "\\b(Type|ExitType|RemainAfterExit|GuessMainPID|PIDFile|BusName|ExecStart|ExecStartPre|ExecStartPost|ExecCondition|ExecReload|ExecStop|ExecStopPost|RestartSec|RestartSteps|RestartMaxDelaySec|TimeoutStartSec|TimeoutStopSec|TimeoutSec|TimeoutAbortSec|TimeoutSec|TimeoutStartFailureMode|TimeoutStopFailureMode|RuntimeMaxSec|RuntimeRandomizedExtraSec|WatchdogSec|Restart|RestartMode|SuccessExitStatus|RestartPreventExitStatus|RestartForceExitStatus|RootDirectoryStartOnly|NonBlocking|NotifyAccess|Sockets|FileDescriptorStoreMax|FileDescriptorStorePreserve|USBFunctionDescriptors|USBFUnctionStrings|OOMPolicy|OpenFile|ReloadSignal)\\b"
       }]
     },
     "socket-section-known-options": {
       "patterns": [{
         "name": "entity.name.tag",
-        "match": "\\b(ListenStream|ListenDatagram|ListenSequentialPacket|ListenFIFO|ListenSpecial|ListenNetlink|ListenMessageQueue|BindIPv6Only|Backlog|BindToDevice|SocketUser|SocketGroup|SocketMode|DirectoryMode|Accept|MaxConnections|KeepAliveTimeSec|KeepAliveIntervalSec|KeepAliveProbes|KeepAlive|NoDelay|Priority|DeferAcceptSec|ReceiveBuffer|SendBuffer|IPTOS|IPTTL|Mark|ReusePort|SmackLabelIPIn|SmackLabelIPOut|SmackLabel|SELinuxContextFromNet|PipeSize|MessageQueueMaxMessages|MessageQueueMessageSize|FreeBind|Transparent|Broadcast|PassCredentials|PassSecurity|TCPCongestion|ExecStartPre|ExecStartPost|ExecStopPre|ExecStopPost|TimeoutSec|Service|RemoveOnStop|Symlinks|KillMode|KillSignal|SendSIGHUP|SendSIGKILL|FinalKillSignal|WatchdogSignal)\\b"
+        "_source": "https://www.freedesktop.org/software/systemd/man/latest/systemd.socket.html",
+        "match": "\\b(ListenStream|ListenDatagram|ListenSequentialPacket|ListenFIFO|ListenSpecial|ListenNetlink|ListenMessageQueue|ListenUSBFunction|SocketProtocol|BindIPv6Only|Backlog|BindToDevice|SocketUser|SocketGroup|SocketMode|DirectoryMode|Accept|Writable|FlushPending|MaxConnections|MaxConnectionsPerSource|KeepAlive|KeepAliveTimeSec|KeepAliveIntervalSec|KeepAliveProbes|NoDelay|Priority|DeferAcceptSec|ReceiveBuffer|SendBuffer|IPTOS|IPTTL|Mark|ReusePort|SmackLabel|SmackLabelIPIn|SmackLabelIPOut|SELinuxContextFromNet|PipeSize|MessageQueueMaxMessages|MessageQueueMessageSize|FreeBind|Transparent|Broadcast|PassCredentials|PassSecurity|PassPacketInfo|Timestamping|TCPCongestion|ExecStartPre|ExecStartPost|ExecStopPre|ExecStopPost|TimeoutSec|Service|RemoveOnStop|Symlinks|FileDescriptorName|TriggerLimitIntervalSec|TriggerLimitBurst|PollLimitIntervalSec|PollLimitBurst|PassFailedDescriptorsToExec)\\b"
       }]
     },
     "mount-section-known-options": {
       "patterns": [{
         "name": "entity.name.tag",
-        "match": "\\b(What|Where|Type|Options|SloppyOptions|DirectoryMode|TimeoutSec|KillMode|KillSignal|SendSIGHUP|SendSIGKILL|FinalKillSignal|WatchdogSignal)\\b"
+        "_source": "https://www.freedesktop.org/software/systemd/man/latest/systemd.mount.html",
+        "match": "\\b(What|Where|Type|Options|SloppyOptions|LazyUnmount|ReadWriteOnly|ForceUnmount|DirectoryMode|TimeoutSec)\\b"
       }]
     },
     "automount-section-known-options": {
       "patterns": [{
         "name": "entity.name.tag",
-        "match": "\\b(Where|DirectoryMode|TimeoutIdleSec)\\b"
+        "_source": "https://www.freedesktop.org/software/systemd/man/latest/systemd.automount.html",
+        "match": "\\b(Where|ExtraOptions|DirectoryMode|TimeoutIdleSec)\\b"
       }]
     },
     "swap-section-known-options": {
       "patterns": [{
         "name": "entity.name.tag",
-        "match": "\\b(What|Priority|Options|TimeoutSec|KillMode|KillSignal|SendSIGHUP|SendSIGKILL|FinalKillSignal|WatchdogSignal)\\b"
+        "_source": "https://www.freedesktop.org/software/systemd/man/latest/systemd.swap.html",
+        "match": "\\b(What|Priority|Options|TimeoutSec)\\b"
       }]
     },
     "path-section-known-options": {
       "patterns": [{
         "name": "entity.name.tag",
-        "match": "\\b(PathExists|PathExistsGlob|PathChanged|PathModified|DirectoryNotEmpty|Unit|MakeDirectory|DirectoryMode)\\b"
+        "_source": "https://www.freedesktop.org/software/systemd/man/latest/systemd.path.html",
+        "match": "\\b(PathExists|PathExistsGlob|PathChanged|PathModified|DirectoryNotEmpty|Unit|MakeDirectory|DirectoryMode|TriggerLimitIntervalSec|TriggerLimitBurst)\\b"
       }]
     },
     "timer-section-known-options": {
       "patterns": [{
         "name": "entity.name.tag",
-        "match": "\\b(OnActiveSec|OnBootSec|OnStartupSec|OnUnitActiveSec|OnUnitInactiveSec|OnCalendar|AccuracySec|RandomizedDelaySec|Unit|Persistent|WakeSystem)\\b"
+        "_source": "https://www.freedesktop.org/software/systemd/man/latest/systemd.timer.html",
+        "match": "\\b(OnActiveSec|OnBootSec|OnStartupSec|OnUnitActiveSec|OnUnitInactiveSec|OnCalendar|AccuracySec|RandomizedDelaySec|FixedRandomDelay|DeferReactivation|OnClockChange|OnTimezoneChange|Unit|Persistent|WakeSystem|RemainAfterElapse)\\b"
       }]
     },
     "execution-environment-known-options": {
       "patterns": [{
         "name": "entity.name.tag",
-        "_source": "https://www.freedesktop.org/software/systemd/man/systemd.exec.html",
-        "match": "\\b(WorkingDirectory|RootDirectory|RootImage|MountAPIVFS|BindPaths|BindReadOnlyPaths|User|Group|DynamicUser|SupplementaryGroups|PAMName|CapabilityBoundingSet|AmbientCapabilities|NoNewPrivileges|SecureBits|SELinuxContext|AppArmorProfile|SmackProcessLabel|LimitCPU|LimitFSIZE|LimitDATA|LimitSTACK|LimitCORE|LimitRSS|LimitNOFILE|LimitAS|LimitNPROC|LimitMEMLOCK|LimitLOCKS|LimitSIGPENDING|LimitMSGQUEUE|LimitNICE|LimitRTPRIO|LimitRTTIME|UMask|KeyringMode|OOMScoreAdjust|TimerSlackNSec|Personality|IgnoreSIGPIPE|Nice|CPUSchedulingPolicy|CPUSchedulingPriority|CPUSchedulingResetOnFork|CPUAffinity|IOSchedulingClass|IOSchedulingPriority|ProtectSystem|ProtectHome|RuntimeDirectory|StateDirectory|CacheDirectory|LogsDirectory|ConfigurationDirectory|RuntimeDirectoryMode|StateDirectoryMode|CacheDirectoryMode|LogsDirectoryMode|ConfigurationDirectoryMode|RuntimeDrectoryPreserve|ReadWritePaths|ReadOnlyPaths|InaccessiblePaths|PrivateTmp|PrivateDevices|PrivateNetwork|PrivateUsers|ProtectKernelTunables|ProtectKernelModules|ProtectControlGroups|RestrictAddressFamilies|RestrictNamespaces|LockPersonality|MemoryDenyWriteExecute|RestrictRealtime|RemoveIPC|MountFlags|SystemCallFilter|SystemCallErrorNumber|SystemCallArchitectures|Environment|EnvironmentFile|PassEnvironment|UnsetEnvironment|StandardInput|StandardOutput|StandardError|StandardInputText|StandardInputData|LogLevelMax|LogExtraFields|SyslogIdentifier|SyslogFacility|SyslogLevel|SyslogLevelPrefix|TTYPath|TTYReset|TTYHangup|TTYVTDisallocate|UtmpIdentifier|UtmpMode|)\\b"
+        "_source": "https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html",
+        "match": "\\b(ExecSearchPath|WorkingDirectory|RootDirectory|RootImage|RootImageOptions|RootEphemeral|RootHash|RootHashSignature|RootVerify|RootImagePolicy|MountImagePolicy|ExtensionImagePolicy|MountAPIVFS|BindLogSockets|ProtectProc|ProcSubset|BindPaths|BindReadOnlyPaths|MountImages|ExtensionImages|ExtensionDirectories|User|Group|DynamicUser|SupplementaryGroups|SetLoginEnvironment|PAMName|CapabilityBoundingSet|AmbientCapabilities|NoNewPrivileges|SecureBits|SELinuxContext|AppArmorProfile|SmackProcessLabel|LimitCPU|LimitFSIZE|LimitDATA|LimitSTACK|LimitCORE|LimitRSS|LimitNOFILE|LimitAS|LimitNPROC|LimitMEMLOCK|LimitLOCKS|LimitSIGPENDING|LimitMSGQUEUE|LimitNICE|LimitRTPRIO|LimitRTTIME|UMask|CoredumpFilter|KeyringMode|OOMScoreAdjust|TimerSlackNSec|Personality|IgnoreSIGPIPE|Nice|CPUSchedulingPolicy|CPUSchedulingPriority|CPUSchedulingResetOnFork|CPUAffinity|NUMAPolicy|NUMAMask|IOSchedulingClass|IOSchedulingPriority|ProtectSystem|ProtectHome|RuntimeDirectory|StateDirectory|CacheDirectory|LogsDirectory|ConfigurationDirectory|RuntimeDirectoryMode|StateDirectoryMode|CacheDirectoryMode|LogsDirectoryMode|ConfigurationDirectoryMode|RuntimeDrectoryPreserve|TimeoutCleanSec|ReadWritePaths|ReadOnlyPaths|InaccessiblePaths|ExecPaths|NoExecPaths|TemporaryFileSystem|PrivateTmp|PrivateDevices|PrivateNetwork|NetworkNamespacePath|PrivateIPC|IPCNamespacePath|MemoryKSM|PrivatePIDs|PrivateUsers|ProtectHostname|ProtectClock|ProtectKernelTunables|ProtectKernelModules|ProtectKernelLogs|ProtectControlGroups|RestrictAddressFamilies|RestrictFileSystems|RestrictNamespaces|LockPersonality|MemoryDenyWriteExecute|RestrictRealtime|RestrictSUIDSGID|RemoveIPC|PrivateMounts|MountFlags|SystemCallFilter|SystemCallErrorNumber|SystemCallArchitectures|SystemCallLog|Environment|EnvironmentFile|PassEnvironment|UnsetEnvironment|StandardInput|StandardOutput|StandardError|StandardInputText|StandardInputData|LogLevelMax|LogExtraFields|LogRateLimitIntervalSec|LogRateLimitBurst|LogFilterPatterns|LogNamespace|SyslogIdentifier|SyslogFacility|SyslogLevel|SyslogLevelPrefix|TTYPath|TTYReset|TTYHangup|TTYColumns|TTYRows|TTYVTDisallocate|LoadCredential|LoadCredentialEncrypted|ImportCredential|SetCredential|SetCredentialEncrypted|UtmpIdentifier|UtmpMode)\\b"
       },{
         "name": "entity.name.tag",
         "_source": "`man 5 systemd.exec` on CentOS 7",
@@ -127,12 +143,26 @@
     "resource-control-known-options": {
       "patterns": [{
         "name": "entity.name.tag",
-        "_source": "https://www.freedesktop.org/software/systemd/man/systemd.resource-control.html",
-        "match": "\\b(CPUAccounting|CPUWeight|StartupCPUWeight|CPUQuota|CPUQuotaPeriodSec|MemoryAccounting|MemoryMin|MemoryLow|MemoryHigh|MemoryMax|MemorySwapMax|TasksAccounting|TasksMax|IOAccounting|IOWeight|StartupIOWeight|IODeviceWeight|IOReadBandwidthMax|IOWriteBandwidthMax|IOReadIOPSMax|IOWriteIOPSMax|IODeviceLatencyTargetSec|IPAccounting|IPAddressAllow|IPAddressDeny|IPIngressFilterPath|IPEgressFilterPath|DeviceAllow|DevicePolicy|Slice|Delegate|DisableControllers)\\b"
+        "_source": "https://www.freedesktop.org/software/systemd/man/latest/systemd.resource-control.html",
+        "match": "\\b(CPUAccounting|CPUWeight|StartupCPUWeight|CPUQuota|CPUQuotaPeriodSec|AllowedCPUs|StartupAllowedCPUs|MemoryAccounting|MemoryMin|MemoryLow|StartupMemoryLow|DefaultStartupMemoryLow|MemoryHigh|StartupMemoryHigh|MemoryMax|StartupMemoryMax|MemorySwapMax|StartupMemorySwapMax|MemoryZSwapMax|StartupMemoryZSwapMax|MemoryZSwapWriteback|AllowedMemoryNodes|StartupAllowedMemoryNodes|TasksAccounting|TasksMax|IOAccounting|IOWeight|StartupIOWeight|IODeviceWeight|IOReadBandwidthMax|IOWriteBandwidthMax|IOReadIOPSMax|IOWriteIOPSMax|IODeviceLatencyTargetSec|IPAccounting|IPAddressAllow|IPAddressDeny|SocketBindAllow|SocketBindDeny|RestrictNetworkInterfaces|NFTSet|IPIngressFilterPath|IPEgressFilterPath|BPFProgram|DeviceAllow|DevicePolicy|Slice|Delegate|DelegateSubgroup|DisableControllers|ManagedOOMSwap|ManagedOOMMemoryPressure|ManagedOOMMemoryPressureLimit|ManagedOOMMemoryPressureDurationSec|ManagedOOMPreference|MemoryPressureWatch|MemoryPressureThresholdSec|CoredumpReceive)\\b"
       },{
         "name": "entity.name.tag",
         "_source": "`man 5 systemd.resource-control` on CentOS 7",
         "match": "\\b(CPUAccounting|CPUShares|StartupCPUShares|CPUQuota|MemoryAccounting|MemoryLimit|TasksAccounting|TasksMax|BlockIOAccounting|BlockIOWeight|StartupBlockIOWeight|BlockIODeviceWeight|BlockIOReadBandwidth|BlockIOWriteBandwidth|DeviceAllow|DevicePolicy|Slice|Delegate)\\b"
+      }]
+    },
+    "kill-known-options": {
+      "patterns": [{
+        "name": "entity.name.tag",
+        "_source": "https://www.freedesktop.org/software/systemd/man/latest/systemd.kill.html",
+        "match": "\\b(KillMode|KillSignal|RestartKillSignal|SendSIGHUP|SendSIGKILL|FinalKillSignal|WatchdogSignal)\\b"
+      }]
+    },
+    "scope-known-options": {
+      "patterns": [{
+        "name": "entity.name.tag",
+        "_source": "https://www.freedesktop.org/software/systemd/man/latest/systemd.scope.html",
+        "match": "\\b(OOMPolicy|RuntimeMaxSec|RuntimeRandomizedExtraSec)\\b"
       }]
     },
     "options-prefixed-with-x": {
