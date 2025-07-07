@@ -11,6 +11,14 @@
     { "include": "#swap-section-known-options" },
     { "include": "#path-section-known-options" },
     { "include": "#timer-section-known-options" },
+    { "include": "#container-section-known-options" },
+    { "include": "#pod-section-known-options" },
+    { "include": "#kube-section-known-options" },
+    { "include": "#network-section-known-options" },
+    { "include": "#volume-section-known-options" },
+    { "include": "#build-section-known-options" },
+    { "include": "#image-section-known-options" },
+    { "include": "#quadlet-section-known-options" },
     { "include": "#execution-environment-known-options"},
     { "include": "#resource-control-known-options" },
     { "include": "#kill-known-options" },
@@ -49,7 +57,7 @@
     "known-sections": {
       "patterns": [{
         "name": "entity.name.section",
-        "match": "\\[(Unit|Install|Service|Socket|Mount|Automount|Swap|Path|Timer)\\]"
+        "match": "\\[(Unit|Install|Service|Socket|Mount|Automount|Swap|Path|Timer|Container|Pod|Kube|Network|Volume|Build|Image|Quadlet)\\]"
       }]
     },
     "unknown-sections": {
@@ -127,6 +135,62 @@
         "name": "entity.name.tag",
         "_source": "https://www.freedesktop.org/software/systemd/man/latest/systemd.timer.html",
         "match": "\\b(OnActiveSec|OnBootSec|OnStartupSec|OnUnitActiveSec|OnUnitInactiveSec|OnCalendar|AccuracySec|RandomizedDelaySec|FixedRandomDelay|DeferReactivation|OnClockChange|OnTimezoneChange|Unit|Persistent|WakeSystem|RemainAfterElapse)\\b"
+      }]
+    },
+    "container-section-known-options": {
+      "patterns": [{
+        "name": "entity.name.tag",
+        "_source": "https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html#container-units-container",
+        "match": "\\b(AddCapability|AddDevice|AddHost|Annotation|AutoUpdate|CgroupsMode|ContainerName|ContainersConfModule|DNS|DNSOption|DNSSearch|DropCapability|Entrypoint|Environment|EnvironmentFile|EnvironmentHost|Exec|ExposeHostPort|GIDMap|GlobalArgs|Group|GroupAdd|HealthCmd|HealthInterval|HealthLogDestination|HealthMaxLogCount|HealthMaxLogSize|HealthOnFailure|HealthRetries|HealthStartPeriod|HealthStartupCmd|HealthStartupInterval|HealthStartupRetries|HealthStartupSuccess|HealthStartupTimeout|HealthTimeout|HostName|Image|IP|IP6|Label|LogDriver|LogOpt|Mask|Memory|Mount|Network|NetworkAlias|NoNewPrivileges|Notify|PidsLimit|Pod|PodmanArgs|PublishPort|Pull|ReadOnly|ReadOnlyTmpgf|ReloadCmd|ReloadSignal|Retry|RetryDelay|Rootfs|RunInit|SeccompProfile|Secret|SecurityLabelDisable|SecurityLabelFileType|SecurityLabelLevel|SecurityLabelNexted|SecurityLabelType|ShmSize|StartWithPod|StopSignal|StopTimeout|SubGIDMap|SubUIDMap|Sysctl|Timezone|Tmpfs|UIDMap|Ulimit|Unmask|User|UserNS|Volume|WorkingDir)\\b"
+      }]
+    },
+    "pod-section-known-options": {
+      "patterns": [{
+        "name": "entity.name.tag",
+        "_source": "https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html#pod-units-pod",
+        "match": "\\b(AddHost|ContainersConfModule|DNS|DNSOption|DNSSearch|ExitPolicy|GIDMap|GlobalArgs|HostName|IP|IP6|Label|Network|NetworkAlias|PodmanArgs|PodName|PublishPort|ServiceName|ShmSize|SubGIDMap|SubUIDMap|UIDMap|UserNS|Volume)\\b"
+      }]
+    },
+    "kube-section-known-options": {
+      "patterns": [{
+        "name": "entity.name.tag",
+        "_source": "https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html#kube-units-kube",
+        "match": "\\b(AutoUpdate|ConfigMap|ContainersConfModule|ExitCodePropagation|GlobalArgs|KubeDownForce|LogDriver|Network|PodmanArgs|PublishPort|SetWorkingDirectory|UserNS|Yaml)\\b"
+      }]
+    },
+    "network-section-known-options": {
+      "patterns": [{
+        "name": "entity.name.tag",
+        "_source": "https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html#network-units-network",
+        "match": "\\b(ContainersConfModule|DisableDNS|DNS|Driver|Gateway|GlobalArgs|InterfaceName|Internal|IPAMDriver|IPRange|IPv6|Label|NetworkDeleteOnStop|NetworkName|Options|PodmanArgs|Subnet)\\b"
+      }]
+    },
+    "volume-section-known-options": {
+      "patterns": [{
+        "name": "entity.name.tag",
+        "_source": "https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html#volume-units-volume",
+        "match": "\\b(ContainersConfModule|Copy|Device|Driver|GlobalArgs|Group|Image|Label|Options|PodmanArgs|Type|User|VolumeName)\\b"
+      }]
+    },
+    "build-section-known-options": {
+      "patterns": [{
+        "name": "entity.name.tag",
+        "_source": "https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html#build-units-build",
+        "match": "\\b(Annotation|Arch|AuthFile|ContainersConfModule|DNS|DNSOption|DNSSearch|Environment|File|ForceRM|GlobalArgs|GroupAdd|ImageTag|Label|Network|PodmanArgs|Pull|Retry|RetryDelay|Secret|SetWorkingDirectory|Target|TLSVerify|Variant|Volume)\\b"
+      }]
+    },
+    "image-section-known-options": {
+      "patterns": [{
+        "name": "entity.name.tag",
+        "_source": "https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html#image-units-image",
+        "match": "\\b(AllTags|Arch|AuthFile|CertDir|ContainersConfModule|Creds|DecryptionKey|GlobalArgs|Image|ImageTag|OS|PodmanArgs|Retry|RetryDelay|TLSVerify|Variant)\\b"
+      }]
+    },
+    "quadlet-section-known-options": {
+      "patterns": [{
+        "name": "entity.name.tag",
+        "_source": "https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html#quadlet-section-quadlet",
+        "match": "\\b(DefaultDependencies)\\b"
       }]
     },
     "execution-environment-known-options": {

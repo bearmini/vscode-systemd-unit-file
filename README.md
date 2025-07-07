@@ -1,39 +1,44 @@
-# systemd-unit-file README
+# systemd-unit-file
 
-VS Code extension for colorizing systemd unit files.
+A Visual Studio Code extension that provides language support for systemd unit files.
 
-## Version history
+## Overview
 
-### 1.0.7
+This extension provides syntax highlighting and language support for systemd unit files (.service, .timer, .socket, etc.) in VS Code.
 
-- Update options
-- Fix some options not being highlighted
+## Features
 
-### 1.0.6
+- Syntax highlighting for systemd unit files
 
-- Update systemd.unit(5) options
+## Supported File Types
 
-### 1.0.5
+The extension supports the following systemd unit file extensions:
 
-- Add systemd.exec(5) options
-- Support systemd.resource-control(5) options
+- .automount
+- .build
+- .container
+- .device
+- .kube
+- .link
+- .mount
+- .netdev
+- .network
+- .path
+- .pod
+- .scope
+- .service
+- .slice
+- .snapshot
+- .socket
+- .swap
+- .target
+- .timer
+- .volume
 
-### 1.0.4
+## License
 
-- Support systemd.kill configuration for services, sockets, mount points, swap devices and scopes
+MIT License
 
-### 1.0.3
+## Repository
 
-- Support systemd.exec(5) - Execution environment configuration
-
-### 1.0.2
-
-- Support wrapped lines
-
-### 1.0.1
-
-- Support network unit files (i.e. .network, .netdev, .link)
-
-### 1.0.0
-
-- Initial release
+https://github.com/bearmini/vscode-systemd-unit-file
