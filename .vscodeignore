@@ -10,3 +10,4 @@ tslint.json
 **/*.map
 **/*.ts
 vsc-extension-quickstart.md
+.mise.toml
